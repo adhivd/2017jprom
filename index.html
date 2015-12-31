@@ -8,8 +8,13 @@
         <link href="style.css" rel="stylesheet" />
 
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="jQuery-2.1.4.js"></script>
+
     </head>
     <body>
+
+        <!-- SECTION 1 (sexy) -->
+
         <div id="main">
             <div id="nav">
                 <ul>
@@ -23,7 +28,148 @@
             </div>
 
 
-        </section>
+            <img src="mockups/images/until-the-end.png" />
+
+            <h2>Join us on Saturday, March 12th for a night to remember.</h2>
+
+
+        </div>
+
+        <!-- SECTION 2 (video) -->
+
+
+        <div id="video">
+
+            <div id="video-countdown">
+
+            <h2>the Video drops 8pm, february 20th</h2>
+                <h4 id="countdown"></h4>
+            </div>
+
+            <div id="description">
+            
+                <h2>
+                    <strong id="spinner-show">
+                      <em class="current">Dance</em>
+                        <div class="next">
+                          <em></em>
+                        </div>
+                    </strong>
+                      <span>until the end.</span>
+                      <ul id="spinner">
+                        <li>Dream</li>
+                        <li>Turn up</li>
+                        <li>Laugh</li>
+                        <li>Dance</li>
+                        <li>Eat</li>
+                      </ul>
+                </h2>
+
+                <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+
+            </div>
+
+
+        </div>
+
+        <!-- SECTION 3 (venue) -->
+
+
+
+        <!-- SECTION 4 (bid info) -->
+
+        <div id="bids">
+
+            <h2>Early bid sales will begin this Thursday, 2/11 for <span>$50</span></h2>
+
+        </div>
+
+
+        <script type="text/javascript">
+
+        // * COUNTDOWN TIMER START * //
+            // set the date we're counting down to
+            var target_date = new Date("Feb 20, 2016").getTime();
+             
+            // variables for time units
+            var days, hours, minutes, seconds;
+             
+            // get tag element
+            var countdown = document.getElementById("countdown");
+             
+            // update the tag with id "countdown" every 1 second
+            setInterval(function () {
+             
+                // find the amount of "seconds" between now and target
+                var current_date = new Date().getTime();
+                var seconds_left = (target_date - current_date) / 1000;
+             
+                // do some time calculations
+                days = parseInt(seconds_left / 86400);
+                seconds_left = seconds_left % 86400;
+                 
+                hours = parseInt(seconds_left / 3600);
+                seconds_left = seconds_left % 3600;
+                 
+                minutes = parseInt(seconds_left / 60);
+                seconds = parseInt(seconds_left % 60);
+                 
+                // format countdown string + set tag value
+                countdown.innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";  
+             
+            }, 1000);
+
+        // * COUNTDOWN TIMER END * //
+
+        // * TEXT SWITCHER START * //
+
+                $(function() {
+          function spinner($element) {
+            var words = [];
+
+            var list = $('li', $element);
+            list.each(function() {
+              words.push($(this).text());    
+            });
+            list.remove();
+
+            var $ss = $('#spinner-show');
+
+            var i = 0, i_next = 1;
+
+            $('.next em', $ss).text(words[i_next]);
+            $ss.width($('.current').width());
+
+            setInterval(function() {
+              $ss.addClass('swap');
+              i = i_next;
+              i_next++;
+              if(i_next >= words.length) i_next = 0;
+              $ss.width($('.next em').width());
+              setTimeout(function() {
+                $('.next em', $ss).text(words[i_next]);
+                $('.current', $ss).text(words[i]);
+                $ss.removeClass('swap');
+              console.log('swap!');
+              }, 600);
+            }, 3800);
+          }
+
+          if($('#spinner').length) {
+            spinner($('#spinner'));
+          }
+        });
+
+        // * TEXT SWITCHER END * //
+
+
+
+        </script>
+
+
     </body>
 
 </html>
