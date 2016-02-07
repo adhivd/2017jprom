@@ -15,11 +15,11 @@
 
         <!-- SECTION 1 (sexy) -->
 
-        <div id="main">
+        <div id="home-main">
             <div id="nav">
                 <ul>
                     <li><a href="#">home</a></li>
-                    <li><a href="#">venue</a></li>
+                    <li><a href="venue.html">venue</a></li>
                     <li><a href="#">prepare</a></li>
                     <li><a href="#">timeline</a></li>
                     <li><a href="#">faq</a></li>
@@ -28,7 +28,7 @@
             </div>
 
 
-            <img src="mockups/images/until-the-end.png" />
+            <img src="mockups/images/logo.png" />
 
             <h2>Join us on Saturday, March 12th for a night to remember.</h2>
 
@@ -164,6 +164,13 @@
         });
 
         // * TEXT SWITCHER END * //
+
+        //* NAVBAR WIDTH GETTER *//
+
+        var docWidth = $(document).width();
+        $('nav-width').width(docWidth);
+
+        //* NAVBAR WIDTH GETTER END *//
 
 
 
